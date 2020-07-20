@@ -7,6 +7,10 @@ set shiftwidth=4
 
 " NERDTree
 map <F8> :NERDTreeToggle<CR>
+let mapleader = ','
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+nnoremap <leader>t : tabe<CR>
 
 auto FileType php setlocal dict+=~/.vim/php_funclist
 
