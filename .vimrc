@@ -42,6 +42,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 Plugin 'posva/vim-vue'
 Plugin 'MaraniMatias/vue-formatter'
+Plugin 'exvim/ex-autocomplpop'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
