@@ -1,0 +1,30 @@
+#!/bin/bash
+a=`git status -s`
+
+array=(${a//,/ })
+for var in ${array[@]}
+do
+    if [ "$var" = "M" ] || [ "$var" = "A" ] || [ "$var" = "D" ]; then
+        continue
+    fi
+
+    # check php file
+    if [[ ! $var =~ ".php" ]]; then
+        echo "Check file $var: not php file, ignoring..."
+    fi
+
+    # fix php file
+    php-cs-fixer fix $var
+
+    # phpcs
+    phpcsResult=`phpcs --standard=psr2 $var | grep ERRORS | grep -v "0 ERRORS"`
+    if [ x"$phpcsResult" != x ]; then
+        echo "-------------------------------------"
+        echo "Git commit error, get phpcs errors:"
+        phpcs --standard=psr2 $var
+        echo "-------------------------------------"
+        exit 1
+    fi
+done
+echo "Congratulations! Code check success!"
+exit 0
