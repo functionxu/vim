@@ -14,6 +14,9 @@ nnoremap <leader>t : tabe<CR>
 
 auto FileType php setlocal dict+=~/.vim/php_funclist
 
+" 不同语言设置不同的配置
+" 示例：~/.vim/ftplugin/javascript.vim
+filetype plugin on
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
