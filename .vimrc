@@ -12,6 +12,8 @@ set shiftwidth=4
 autocmd vimenter * if !argc()|NERDTree|
 " 关闭最后一个页面，把书签关闭
 autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" 打开新的窗口，自动打开书签
+autocmd BufWinEnter * NERDTreeMirror
 map <F8> :NERDTreeToggle<CR>
 let mapleader = ','
 nnoremap <C-l> gt
